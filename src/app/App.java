@@ -13,6 +13,10 @@ public class App {
         File folder = new File(home+"/data/in");
         File[] listOfFiles = folder.listFiles();
 
+        int countSalesmen;
+        int countCustomers;
+        countCustomers = 0; countSalesmen = 0; 
+
         long startTime = System.nanoTime();
 
         for (int i = 0; i < listOfFiles.length; i++) {
@@ -21,11 +25,13 @@ public class App {
                 BufferedReader bfr = new BufferedReader(new FileReader(file));
                 String reading = "";
                 while((reading = bfr.readLine())!=null){
-                    p.countAmount(reading);
+                    p.process(reading, countCustomers, countSalesmen);
                 }
                 bfr.close();
             } 
         }
+
+        System.out.println(countCustomers + " Customers. " + countSalesmen + " Salesmen.");
 
         long endTime = System.nanoTime();
         System.out.println(endTime - startTime);
