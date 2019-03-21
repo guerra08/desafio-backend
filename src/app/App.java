@@ -3,6 +3,7 @@ package app;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import app.Processing.Counter;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -25,7 +26,9 @@ public class App {
                 BufferedReader bfr = new BufferedReader(new FileReader(file));
                 String reading = "";
                 while((reading = bfr.readLine())!=null){
-                    p.process(reading, countCustomers, countSalesmen);
+                    Counter c = p.process(reading, countCustomers, countSalesmen);
+                    countCustomers=+c.getCountCustomers();
+                    countSalesmen=+c.getCountSalesmen();
                 }
                 bfr.close();
             } 
