@@ -1,16 +1,33 @@
 package app;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 public class App {
     public static void main(String[] args) throws Exception {
+
         Processing p = new Processing();
+
+        String home = System.getProperty("user.home");
+        File folder = new File(home+"/data/in");
+        File[] listOfFiles = folder.listFiles();
+
         long startTime = System.nanoTime();
-        
-        p.countAmount("001ç1234567891234çDiegoç50000 001ç3245678865434çRenatoç40000.99 002ç2345675434544345çJose da SilvaçRural 002ç2345675433444345çEduardo PereiraçRural 003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego");
-        
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            File file = listOfFiles[i];
+            if (file.isFile() && file.getName().endsWith(".dat")) {
+                BufferedReader bfr = new BufferedReader(new FileReader(file));
+                String reading = "";
+                while((reading = bfr.readLine())!=null){
+                    p.countAmount(reading);
+                }
+                bfr.close();
+            } 
+        }
+
         long endTime = System.nanoTime();
-
-        long totalTime = endTime-startTime;
-
-        System.out.println(totalTime);
+        System.out.println(endTime - startTime);
     }
 }
