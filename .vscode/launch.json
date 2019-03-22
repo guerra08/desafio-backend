@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - FMonitoring",
+            "request": "launch",
+            "mainClass": "app.FMonitoring",
+            "projectName": "desafio-backend"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - App",
             "request": "launch",
             "mainClass": "app.App",
