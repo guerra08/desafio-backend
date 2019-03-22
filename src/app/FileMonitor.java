@@ -11,28 +11,26 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-public class FMonitoring {
-    public static void main(String[] args) throws IOException, InterruptedException {
+public class FileMonitor {
 
-        String home = System.getProperty("user.home");
-        Path dataFolder = Paths.get(home+"/data/in");
+	public void monitorFolder(String pathToFolder) throws IOException, InterruptedException {
+		FileOperations fop = new FileOperations();
+		Path dataFolder = Paths.get(pathToFolder);
 		WatchService watchService = FileSystems.getDefault().newWatchService();
 		dataFolder.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
-
 		boolean valid = true;
 		do {
 			WatchKey watchKey = watchService.take();
-
 			for (WatchEvent event : watchKey.pollEvents()) {
 				WatchEvent.Kind kind = event.kind();
 				if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
-					String fileName = event.context().toString();
-					
+					System.out.println("entered monitor");
+					DataCounter doc = fop.processAllFolder(dataFolder.toFile());
+            		System.out.println(doc.getCountSalesmen() + " - " + doc.getCountCustomers());
 				}
 			}
 			valid = watchKey.reset();
 
 		} while (valid);
-    }
-
+	}
 }

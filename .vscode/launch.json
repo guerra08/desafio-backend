@@ -5,14 +5,16 @@
             "name": "CodeLens (Launch) - FMonitoring",
             "request": "launch",
             "mainClass": "app.FMonitoring",
-            "projectName": "desafio-backend"
+            "projectName": "desafio-backend",
+            "console":"integratedTerminal"
         },
         {
             "type": "java",
             "name": "CodeLens (Launch) - App",
             "request": "launch",
             "mainClass": "app.App",
-            "projectName": "desafio-backend"
+            "projectName": "desafio-backend",
+            "console":"integratedTerminal"
         }
     ]
 }
