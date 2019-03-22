@@ -1,9 +1,9 @@
 package app;
 
+import java.util.Comparator;
 import java.util.Scanner;
-import java.io.BufferedReader;
+import java.util.stream.Stream;
 import java.io.File;
-import java.io.FileReader;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -21,8 +21,10 @@ public class App {
         String input = sc.nextLine();
 
         if(input.equals("S")||input.equals("s")){
-            DataCounter doc = fop.processAllFolder(folder);
-            System.out.println(doc.getCountSalesmen() + " - " + doc.getCountCustomers());
+            DataReturn doc = fop.processAllFolder(folder);
+            Stream<Sale> streamSales = doc.getSales().stream();
+            Sale s = streamSales.min(Comparator.comparing(Sale::getTotalPrice)).get();
+            System.out.println(s.getId());
         }
         else if(input.equals("N")||input.equals("n")){
             FileMonitor fm = new FileMonitor();

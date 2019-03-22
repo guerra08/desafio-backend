@@ -1,12 +1,17 @@
 package app;
-public class DataCounter{ //Class to store values of the counters
+
+import java.util.ArrayList;
+
+public class DataReturn{ //Class to store values of the counters
 
     private int countCustomers;
     private int countSalesmen;
+    private ArrayList<Sale> sales = new ArrayList<>();
 
-    public DataCounter(int countSalesmen, int countCustomers){
+    public DataReturn(int countSalesmen, int countCustomers, ArrayList<Sale> sales){
         setCountSalesmen(countSalesmen);
         setCountCustomers(countCustomers);
+        setSale(sales);
     }
 
     /**
@@ -36,4 +41,19 @@ public class DataCounter{ //Class to store values of the counters
     public int getCountSalesmen() {
         return countSalesmen;
     }
+
+    /**
+     * @param sale the sale to set
+     */
+    public void setSale(ArrayList<Sale> sales) {
+        this.sales = sales;
+    }
+
+    /**
+     * @return the sale
+     */
+    public ArrayList<Sale> getSales() {
+        return sales;
+    }
+
 }

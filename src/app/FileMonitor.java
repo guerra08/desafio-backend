@@ -25,7 +25,7 @@ public class FileMonitor {
 				WatchEvent.Kind kind = event.kind();
 				if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
 					System.out.println("entered monitor");
-					DataCounter doc = fop.processAllFolder(dataFolder.toFile());
+					DataReturn doc = fop.processAllFolder(dataFolder.toFile());
             		System.out.println(doc.getCountSalesmen() + " - " + doc.getCountCustomers());
 				}
 			}
