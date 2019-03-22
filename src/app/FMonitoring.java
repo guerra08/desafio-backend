@@ -15,9 +15,9 @@ public class FMonitoring {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         String home = System.getProperty("user.home");
-        Path folder = Paths.get(home+"/data/in");
+        Path dataFolder = Paths.get(home+"/data/in");
 		WatchService watchService = FileSystems.getDefault().newWatchService();
-		folder.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
+		dataFolder.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
 
 		boolean valid = true;
 		do {
@@ -27,7 +27,7 @@ public class FMonitoring {
 				WatchEvent.Kind kind = event.kind();
 				if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
 					String fileName = event.context().toString();
-					System.out.println("File Created:" + fileName);
+					
 				}
 			}
 			valid = watchKey.reset();
