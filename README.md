@@ -9,9 +9,9 @@ Pendências:
 - Melhoramentos na utilização do sistema pelo usuário;
 
 REQUISITOS:
--Computador com Windows / Linux;
--Permissão de escrita no HOMEPATH;
--Java na versão 8 ou superior;
+- Computador com Windows / Linux;
+- Permissão de escrita no HOMEPATH;
+- Java na versão 8 ou superior;
 
 Passo a passo:
 
