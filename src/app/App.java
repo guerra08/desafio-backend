@@ -20,11 +20,11 @@ public class App {
         System.out.println("Deseja processar os arquivos atuais do diretório "+folder.getAbsolutePath()+"? (S | N)");
         String input = sc.nextLine();
 
-        if(input.equals("S")||input.equals("s")){ //If you want to perform a check with the existinf files in the HOMEPATH
+        if(input.equals("S")||input.equals("s")){ //If you want to perform a check with the existing files in the HOMEPATH
             fop.processAllFolder(folder);
             fm.monitorFolder(folderToString);
         }
-        else if(input.equals("N")||input.equals("n")){ //If you do not want to perform a check with the existinf files in the HOMEPATH
+        else if(input.equals("N")||input.equals("n")){ //If you do not want to perform a check with the existing files in the HOMEPATH
             fm.monitorFolder(folderToString);
         }
         sc.close();
