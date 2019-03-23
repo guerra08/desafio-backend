@@ -1,12 +1,12 @@
 package app;
 
-import java.util.ArrayList;
+import java.util.ArrayList; //Necessary imports
 
 public class DataOperations{
 
     public DataReturn process(String data, int countCustomers, int countSalesmen){
 
-        String[] eachElement = data.split("(?=001ç)|(?=002ç)|(?=003ç)");
+        String[] eachElement = data.split("(?=001ç)|(?=002ç)|(?=003ç)"); //Regex with the 3 possible prefixes to be used as separators of the data
         ArrayList<Sale> sales = new ArrayList<>();
 
         for(int i = 0; i<eachElement.length; i++){
