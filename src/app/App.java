@@ -1,7 +1,9 @@
 package app;
 
 import java.util.Comparator;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.io.File;
 
@@ -22,8 +24,13 @@ public class App {
 
         if(input.equals("S")||input.equals("s")){
             DataReturn doc = fop.processAllFolder(folder);
-            Stream<Sale> streamSales = doc.getSales().stream();
-            Sale s = streamSales.min(Comparator.comparing(Sale::getTotalPrice)).get();
+            Stream<Sale> streamTotalPrice = doc.getSales().stream(); //Creating stream from ArrayList in order to execute operations more easily
+            Sale s = streamTotalPrice.min(Comparator.comparing(Sale::getTotalPrice)).get();
+            Stream<Sale> streamSalesmen = doc.getSales().stream();
+            Map<String, Long> salesmenMap = streamSalesmen.collect(Collectors.groupingBy(Sale::getSalesman,Collectors.counting()));
+
+            System.out.println(salesmenMap.get("Renato"));
+                           
             System.out.println(s.getId());
         }
         else if(input.equals("N")||input.equals("n")){
